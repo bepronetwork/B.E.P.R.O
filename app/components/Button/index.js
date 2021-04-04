@@ -12,21 +12,24 @@ import PropTypes from 'prop-types';
 import A from './A';
 import StyledButton from './StyledButton';
 
-
 const buttonStyles = {
-    width: "220px",
-    backgroundColor : "black",
-    textAlign: "center",
-    textDecoration : 'none',
-    border : 'none',
-    borderRadius : 0,
-    height: "auto",
-}
+  width: '220px',
+  backgroundColor: 'black',
+  textAlign: 'center',
+  textDecoration: 'none',
+  border: 'none',
+  borderRadius: 0,
+  height: 'auto',
+};
 
 function Button(props) {
   // Render an anchor tag
   let button = (
-    <A href={props.href} style={{...buttonStyles, ...props.style}} onClick={props.onClick}>
+    <A
+      href={props.href}
+      style={{ ...buttonStyles, ...props.style }}
+      onClick={props.onClick}
+    >
       {Children.toArray(props.children)}
     </A>
   );
@@ -34,7 +37,10 @@ function Button(props) {
   // If the Button has a handleRoute prop, we want to render a button
   if (props.handleRoute) {
     button = (
-      <StyledButton style={{...buttonStyles, ...props.style}}  onClick={props.handleRoute}>
+      <StyledButton
+        style={{ ...buttonStyles, ...props.style }}
+        onClick={props.handleRoute}
+      >
         {Children.toArray(props.children)}
       </StyledButton>
     );

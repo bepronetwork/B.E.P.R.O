@@ -23,8 +23,8 @@ const AppWrapper = styled.div`
   margin: 0 auto;
   display: flex;
   min-height: 100%;
-  background-color : white;
-  padding : 20px 10%;
+  background-color: white;
+  padding: 20px 10%;
   flex-direction: column;
 `;
 
@@ -35,7 +35,10 @@ export default function App() {
         titleTemplate="Art | b.e.p.r.o"
         defaultTitle="belle et puissante, l'a raisonnablement obligée"
       >
-        <meta name="description" content="belle et  puissante, l'a raisonnablement obligée" />
+        <meta
+          name="description"
+          content="belle et  puissante, l'a raisonnablement obligée"
+        />
       </Helmet>
       <Header />
       <Switch>

@@ -7,11 +7,7 @@ import Wrapper from './Wrapper';
 import messages from './messages';
 
 function Footer() {
-	return (
-		<Wrapper>
-			
-		</Wrapper>
-	);
+  return <Wrapper />;
 }
 
 export default Footer;
