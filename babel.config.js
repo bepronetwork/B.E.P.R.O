@@ -1,12 +1,15 @@
 module.exports = {
   presets: [
-    [
-      '@babel/preset-env',
+    ['@babel/preset-env',
       {
         modules: false,
       },
     ],
     '@babel/preset-react',
+  ],
+  only: [
+    "app",
+    "node_modules"
   ],
   plugins: [
     'styled-components',
@@ -15,7 +18,7 @@ module.exports = {
   ],
   env: {
     production: {
-      only: ['app'],
+      only: ['app', "node_modules"],
       plugins: [
         'lodash',
         'transform-react-remove-prop-types',

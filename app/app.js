@@ -12,7 +12,12 @@ import '@babel/polyfill';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import { ConnectedRouter } from 'connected-react-router';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
 import FontFaceObserver from 'fontfaceobserver';
 import history from 'utils/history';
 import 'sanitize.css/sanitize.css';
@@ -26,34 +31,22 @@ import LanguageProvider from 'containers/LanguageProvider';
 // Load the favicon and the .htaccess file
 import '!file-loader?name=[name].[ext]!./images/favicon.ico';
 import 'file-loader?name=.htaccess!./.htaccess'; // eslint-disable-line import/extensions
-
-import configureStore from './configureStore';
+import { createStore } from 'redux';
 
 // Import i18n messages
 import { translationMessages } from './i18n';
-
-// Observe loading of Open Sans (to remove open sans, remove the <link> tag in
-// the index.html file and this observer)
-const openSansObserver = new FontFaceObserver('Open Sans', {});
-
-// When Open Sans is loaded, add a font-family using Open Sans to the body
-openSansObserver.load().then(() => {
-  document.body.classList.add('fontLoaded');
-});
+import { reducer } from './redux/reducer';
 
 // Create redux store with history
-const initialState = {};
-const store = configureStore(initialState, history);
+export const store = createStore(reducer);
 const MOUNT_NODE = document.getElementById('app');
 
 const render = messages => {
   ReactDOM.render(
     <Provider store={store}>
-      <LanguageProvider messages={messages}>
-        <ConnectedRouter history={history}>
+        <Router history={history}>
           <App />
-        </ConnectedRouter>
-      </LanguageProvider>
+        </Router>
     </Provider>,
     MOUNT_NODE,
   );
