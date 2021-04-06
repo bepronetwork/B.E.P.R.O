@@ -1,3 +1,5 @@
+import accounting from 'accounting';
+
 export function numberWithCommas(x) {
-  return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+    return accounting.formatNumber(x, 2)
 }

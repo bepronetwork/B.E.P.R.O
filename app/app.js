@@ -31,14 +31,12 @@ import LanguageProvider from 'containers/LanguageProvider';
 // Load the favicon and the .htaccess file
 import '!file-loader?name=[name].[ext]!./images/favicon.ico';
 import 'file-loader?name=.htaccess!./.htaccess'; // eslint-disable-line import/extensions
-import { createStore } from 'redux';
 
 // Import i18n messages
 import { translationMessages } from './i18n';
-import { reducer } from './redux/reducer';
+import { reducer, store } from './redux/reducer';
 
 // Create redux store with history
-export const store = createStore(reducer);
 const MOUNT_NODE = document.getElementById('app');
 
 const render = messages => {

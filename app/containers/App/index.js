@@ -18,14 +18,15 @@ import Header from 'components/Header';
 import Footer from 'components/Footer';
 import { Application } from 'bepro-js';
 import GlobalStyle from '../../global-styles';
-import { store } from '../../app';
-import { addContractInfo } from '../../redux/reducer';
+import { addContractInfo, store } from '../../redux/reducer';
+import CollectionsPage from '../CollectionsPage';
 
 
 let app = new Application({ mainnet: false });
 app.start();
+global.app = app;
 
-let contract = app.getERC721Collectibles({ contractAddress: "0x8e60e8ddbec0279b4e2cc5d60054edf297dbca97" });
+let contract = app.getERC721Collectibles({ contractAddress: "0xAbdbc96b68F73D19E16E70B1E3906C02F5288f3c" });
 
 const AppWrapper = styled.div`
 	margin: 0 auto;
@@ -50,25 +51,26 @@ class App extends React.Component {
 
 	render = () => {
 		return (
-				<AppWrapper>
-					<Helmet
-						titleTemplate="Art | b.e.p.r.o"
-						defaultTitle="belle et puissante, l'a raisonnablement obligée"
-					>
-						<meta
-							name="description"
-							content="belle et  puissante, l'a raisonnablement obligée"
-						/>
-					</Helmet>
-					<Header />
-					<Switch>
-						<Route exact path="/" component={HomePage} />
-						<Route path="/art" component={FeaturePage} />
-						<Route path="" component={NotFoundPage} />
-					</Switch>
-					<Footer />
-					<GlobalStyle />
-				</AppWrapper>
+			<AppWrapper>
+				<Helmet
+					titleTemplate="Art | b.e.p.r.o"
+					defaultTitle="Art | belle et puissante, l'a raisonnablement obligée"
+				>
+					<meta
+						name="description"
+						content="Art | belle et  puissante, l'a raisonnablement obligée"
+					/>
+				</Helmet>
+				<Header />
+				<Switch>
+					<Route exact path="/" component={HomePage} />
+					<Route path="/art" component={FeaturePage} />
+					<Route path="/collection" component={CollectionsPage} />
+					<Route path="" component={NotFoundPage} />
+				</Switch>
+				<Footer />
+				<GlobalStyle />
+			</AppWrapper>
 		);
 	}
 

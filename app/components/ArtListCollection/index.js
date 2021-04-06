@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import ArtContainer from '../ArtContainer';
 import { connect } from 'react-redux'; 
+import { getContract } from '../../env';
 
 const TitleWrapper = styled.div`
 padding: 50px 5%;
@@ -10,21 +11,19 @@ width: 100%;
 height: 274px;
 display: flex;
 flex-wrap: wrap;
-@media only screen and (max-width: 600px) {
-	padding : 0px !important;
-}
+    @media only screen and (max-width: 600px) {
+        padding : 0px !important;
+    }
 `;
 
 const ContainerWrapper = styled.div`
 padding: 25px;
 @media only screen and (max-width: 600px) {
-	padding : 0px !important;
+    padding : 0px !important;
 }
 `;
 
-
-
-class ArtList extends React.Component {
+class ArtListCollection extends React.Component {
 
 	constructor(props){
 		super(props);
@@ -44,17 +43,20 @@ class ArtList extends React.Component {
 	_update = async (props) => {
 		if(!props.contract){return}
 		let arr = [];
-		//all
-		let id = await props.contract.currentTokenId();
-		for(var i = 1000; i < 1100; i++){
-			console.log("i", i == id ? 'SALE' : i < id ? 'SOLD' : 'NOT_AVAILABLE');
-
-			arr.push({
-				id : i,
-				state : i == id ? 'SALE' : i < id ? 'SOLD' : 'NOT_AVAILABLE',
-				loaded :false
-			})
-		}
+		let address = await global.app.getAddress();
+		if(address){
+			//owner of
+			let ids = await (await getContract()).getRegisteredIDs({address});
+			for(var i = 0; i < ids.length; i++){
+				arr.push({
+					id : ids[i],
+					state : 'SOLD',
+					loaded :false
+				})
+			}
+		}else{
+            //nothing
+        }
 		this.setState({
 			items : arr
 		})
@@ -65,7 +67,7 @@ class ArtList extends React.Component {
 			<TitleWrapper>
 				{this.state.items.map((i, index) =>
 					<ContainerWrapper key={index}>
-						{i.state != "NOT_AVAILABLE"
+						{i.state == "SALE" || "SOLD"
 							? (
 								<Link to={`/art?id=${i.id}`}>
 									<ArtContainer key={index} item={i} />
@@ -84,10 +86,11 @@ class ArtList extends React.Component {
 
 const mapStateToProps = state => {
 	return {
-	  	contract : state.contract
+	  	contract : state.contract,
+        address : state.address
 	};
 };
 
-ArtList = connect(mapStateToProps)(ArtList);
+ArtListCollection = connect(mapStateToProps)(ArtListCollection);
 
-export default ArtList;
+export default ArtListCollection;

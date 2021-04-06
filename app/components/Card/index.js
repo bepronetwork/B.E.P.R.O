@@ -6,6 +6,11 @@ const calc = (x, y) => [
   (x - window.innerWidth / 2) / 20,
   1.1,
 ];
+
+
+let getRandomImage = () => {
+  return `https://media.nga.gov/iiif/a1fd5a3e-9aa7-4480-886e-dc8a2e3d2a69__640/full/!600,600/0/default.jpg`;
+}
 const trans = (x, y, s) =>
   `perspective(600px) rotateX(${x}deg) rotateY(${y}deg) scale(${s})`;
 
@@ -15,11 +20,12 @@ function Card({ item }) {
     config: { mass: 5, tension: 350, friction: 40 },
   }));
   const _isAvailable = item.state != 'NOT_AVAILABLE';
-  const _filter = _isAvailable ? 'none' : 'grayscale(100%)';
+  const _filter = _isAvailable ? 'none' : 'none';
 
+  let image = _isAvailable ? item.image : getRandomImage(item.id);
   return (
     <animated.img
-      src={item.url}
+      src={image}
       alt={item.description}
       onMouseMove={({ clientX: x, clientY: y }) => set({ xys: calc(x, y) })}
       onMouseLeave={() => set({ xys: [0, 0, 1] })}
