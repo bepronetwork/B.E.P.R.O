@@ -7,8 +7,9 @@
     "url": "git://github.com/react-boilerplate/react-boilerplate.git"
   },
   "engines": {
-    "npm": ">=5",
-    "node": ">=8.15.1"
+    "node": "13.1.0",
+    "npm": "6.12.1",
+    "yarn": "1.19.1"
   },
   "author": "Max Stoiber",
   "license": "MIT",
@@ -73,6 +74,7 @@
     "compression": "1.7.4",
     "connected-react-router": "6.4.0",
     "cross-env": "5.2.0",
+    "dotenv-webpack": "^7.0.2",
     "express": "4.16.4",
     "fontfaceobserver": "2.1.0",
     "history": "4.9.0",
@@ -91,6 +93,7 @@
     "react-intl": "2.8.0",
     "react-redux": "^7.0.2",
     "react-router-dom": "5.0.0",
+    "react-scripts": "^4.0.3",
     "react-spring": "^8.0.5",
     "react-tooltip": "^4.2.17",
     "reactstrap": "^8.9.0",
@@ -125,6 +128,7 @@
     "compression-webpack-plugin": "2.0.0",
     "coveralls": "3.0.3",
     "css-loader": "2.1.1",
+    "dotenv": "^8.2.0",
     "eslint": "5.16.0",
     "eslint-config-airbnb": "17.1.0",
     "eslint-config-airbnb-base": "13.1.0",

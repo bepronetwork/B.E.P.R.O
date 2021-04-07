@@ -20,13 +20,14 @@ import { Application } from 'bepro-js';
 import GlobalStyle from '../../global-styles';
 import { addContractInfo, store } from '../../redux/reducer';
 import CollectionsPage from '../CollectionsPage';
+import { CONTRACT_ADDRESS, ENV } from '../../env';
 
 
-let app = new Application({ mainnet: false });
+let app = new Application({ mainnet: ENV == 'DEV' ? false : true });
 app.start();
 global.app = app;
 
-let contract = app.getERC721Collectibles({ contractAddress: "0xAbdbc96b68F73D19E16E70B1E3906C02F5288f3c" });
+let contract = app.getERC721Collectibles({ contractAddress: CONTRACT_ADDRESS });
 
 const AppWrapper = styled.div`
 	margin: 0 auto;
