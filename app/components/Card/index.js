@@ -31,8 +31,8 @@ function Card({ item }) {
       onMouseLeave={() => set({ xys: [0, 0, 1] })}
       style={{
         filter: _filter,
-        width: 350,
-        height: 350,
+        width: '100%',
+        height : 'auto',
         transform: _isAvailable ? props.xys.interpolate(trans) : null,
         boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)',
       }}

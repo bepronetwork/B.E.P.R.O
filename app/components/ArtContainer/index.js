@@ -17,7 +17,7 @@ height: 540px;
 background: #ffffff;
 
 @media only screen and (max-width: 600px) {
-	width: 250px !important;
+	width: 300px !important;
 }
 `;
 
@@ -27,7 +27,7 @@ height: 540px;
 background: #f5f5f5;
 
 	@media only screen and (max-width: 600px) {
-		width: 250px !important;
+		width: 300px !important;
 	}
 `;
 
@@ -37,7 +37,7 @@ height: 540px;
 background: white;
 
 @media only screen and (max-width: 600px) {
-	width: 250px !important;
+	width: 300px !important;
 }
 `;
 
