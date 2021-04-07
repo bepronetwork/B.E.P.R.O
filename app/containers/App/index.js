@@ -22,11 +22,10 @@ import { addContractInfo, store } from '../../redux/reducer';
 import CollectionsPage from '../CollectionsPage';
 import { CONTRACT_ADDRESS, ENV } from '../../env';
 
-
+console.log("ENV", ENV, CONTRACT_ADDRESS);
 let app = new Application({ mainnet: ENV == 'DEV' ? false : true });
 app.start();
 global.app = app;
-console.log("ENV", ENV, CONTRACT_ADDRESS);
 let contract = app.getERC721Collectibles({ contractAddress: CONTRACT_ADDRESS });
 
 const AppWrapper = styled.div`

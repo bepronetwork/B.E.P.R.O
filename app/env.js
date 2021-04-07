@@ -2,6 +2,7 @@ import { store } from "./redux/reducer";
 
 export const BEPRO_PRICE = process.env.BEPRO_PRICE;
 export const CONTRACT_ADDRESS = process.env.CONTRACT_ADDRESS;
+console.log("proe", process.env.ENVIRONMENT)
 export const ENV =  process.env.ENVIRONMENT;
 
 
