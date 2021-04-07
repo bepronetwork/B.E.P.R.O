@@ -2,7 +2,7 @@ import { store } from "./redux/reducer";
 
 export const BEPRO_PRICE = process.env.BEPRO_PRICE;
 export const CONTRACT_ADDRESS = process.env.CONTRACT_ADDRESS;
-export const ENV =  process.env.ENV;
+export const ENV =  process.env.ENVIRONMENT;
 
 
 export const getContract = async () => {
