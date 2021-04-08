@@ -105,7 +105,7 @@ class FeaturePage extends React.Component{
 				}
 			};
 			
-			isApproved = (await getContract()).isApproved({address : isLogged, amount : price})
+			isApproved = await (await getContract()).isApproved({address : isLogged, amount : price})
 		}
 		
 		this.setState({
@@ -155,7 +155,7 @@ class FeaturePage extends React.Component{
 
 	render = () => {
 		const {item, isLogged, isApproved, isLoadingApprove, isLoadingMint, isLoadingBuy, isPurchased, isMine} = this.state;
-		console.log("p", isPurchased, isMine, !item.minted, (isPurchased && isMine && !item.minted) )
+		console.log("p", isPurchased, isMine, !item.minted, (isPurchased && isMine && !item.minted), isApproved )
 		return (
 			<TitleWrapper>
 				<ContainerWrapper>
