@@ -10,7 +10,7 @@ import { connect } from 'react-redux';
 import axios from 'axios';
 import { numberWithCommas } from '../../utils/numbers';
 import { BEPRO_PRICE } from '../../env';
-
+import delay from 'delay';
 const TitleWrapperSold = styled.div`
 width: 350px;
 height: 540px;
@@ -89,6 +89,7 @@ class ArtContainer extends React.Component{
 		let _url = await this.props.contract.baseURI();
 		let itemData = await axios.get(_url+this.state.item.id);
 		let price = 1000*1.09**(this.state.item.id-1000); 
+		await delay(200*parseInt(this.state.item.id-1000));
 
 		this.setState({
 			item : {
@@ -130,9 +131,12 @@ class ArtContainer extends React.Component{
 				break;
 			}
 		}
+		
 		return (
 			<Wrapper>
-				<Card item={item}/>
+				{
+					<Card item={item}/>
+				}
 				<ContentWrapper>
 					{/*item.state == 'NOT_AVAILABLE' ? (
 						<NOT_AVAILABLE_InfoWrapper>
